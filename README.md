@@ -437,8 +437,6 @@ pip install pandas matplotlib seaborn numpy plotly math matplotlib requests
 
 ## 📂 Project Access
 
-## 📂 Project Access
-
 - [Notebook](notebooks/main.ipynb)
 - [Cleaning](src/cleaning.py)
 - [Analyze](src/analyze_values.py)
