@@ -1,10 +1,5 @@
-Perfecto — lo integro de forma profesional y natural dentro del README, sin que suene decorativo sino estratégico.
-
 # 🧠 Workplace Mental Health Risk Modeling
-
-### EY Data Challenge – Predictive ML & Employee Profiling
-
-**Author:** Barbara Ortiz
+## EY Data Challenge – Predictive ML & Employee Profiling
 
 ---
 
