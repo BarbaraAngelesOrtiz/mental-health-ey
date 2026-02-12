@@ -125,19 +125,16 @@ mental-health-ey/
 │   ├── rf_threshold_condition.pkl
 │   └── rf_threshold_treatment.pkl
 │
-├── notebooks/
-│   └── main.ipynb
+├──  src/
+│    ├── analyze_values.py
+│    ├── cleaning.py
+│    ├── clustering.py
+│    ├── features.py
+│    ├── model_condition.py
+│    ├── model_treatment.py
+│    └── submission_excel.py 
 │
-└── src/
-    ├── analyze_values.py
-    ├── cleaning.py
-    ├── clustering.py
-    ├── features.py
-    ├── model_condition.py
-    ├── model_treatment.py
-    └── submission_excel.py
-
-
+└── requirements. txt 
 ````
 ---
 
