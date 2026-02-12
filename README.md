@@ -133,7 +133,7 @@ mental-health-ey/
 ````
 ---
 
-# 🧹 1️⃣ Data Preparation & Quality Assurance
+## 🧹 1️. Data Preparation & Quality Assurance
 
 ✔ Cleaned and normalized categorical responses
 ✔ Handled missing values (“N/A”, “I don’t know”, “Prefer not to say”)
@@ -149,13 +149,13 @@ data/processed/mental_health_cleaned.csv
 
 ---
 
-# 🧮 2️⃣ Feature Engineering & Index Construction
+## 🧮 2️. Feature Engineering & Index Construction
 
 Three composite indices were engineered as required:
 
 ---
 
-## 🟢 Mental Health Support Index
+### 🟢 Mental Health Support Index
 
 Captures institutional support:
 
@@ -168,7 +168,7 @@ Top correlated field pairs were identified as required by the submission templat
 
 ---
 
-## 🟠 Workplace Stigma Index
+### 🟠 Workplace Stigma Index
 
 Captures perceived negative consequences:
 
@@ -181,7 +181,7 @@ Top 5 correlation pairs provided.
 
 ---
 
-## 🔵 Organizational Openness Score
+### 🔵 Organizational Openness Score
 
 Captures comfort discussing mental health:
 
@@ -195,7 +195,7 @@ All engineered features were saved into a modeling-ready dataset before clusteri
 
 ---
 
-# 👥 3️⃣ Clustering — Worker Profiling
+## 👥 3️. Clustering — Worker Profiling
 
 Objective: Identify three distinct employee profiles.
 
@@ -208,7 +208,7 @@ KMeans was selected because:
 
 ---
 
-## 🟠 Cluster 0 — Low Support / Low Openness
+### 🟠 Cluster 0 - Low Support / Low Openness
 
 ~63% of sample
 
@@ -223,7 +223,7 @@ Systemically vulnerable population.
 
 ---
 
-## 🔵 Cluster 1 — Large Companies / Moderate Support
+### 🔵 Cluster 1 — Large Companies / Moderate Support
 
 ~16% of sample
 
@@ -237,7 +237,7 @@ Having policies ≠ feeling psychologically safe.
 
 ---
 
-## 🟢 Cluster 2 — High Benefits / Strong Support
+### 🟢 Cluster 2 — High Benefits / Strong Support
 
 ~20% of sample
 
@@ -253,13 +253,13 @@ Top 3 defining variables per cluster were identified and exported as required by
 
 ---
 
-# 🤖 4️⃣ Supervised Modeling
+## 🤖 4️. Supervised Modeling
 
 Two required targets:
 
 ---
 
-## 🎯 Model 1
+### 🎯 Model 1
 
 Target:
 **“Do you currently have a mental health disorder?”**
@@ -271,7 +271,7 @@ Target:
 
 ---
 
-## 🎯 Model 2
+### 🎯 Model 2
 
 Target:
 **“Have you ever sought treatment for a mental health issue from a mental health professional?”**
@@ -285,7 +285,7 @@ Random Forest was evaluated but Logistic Regression performed better and provide
 
 ---
 
-# 🔎 Model Interpretability
+## 🔎 Model Interpretability
 
 Feature importance analysis performed via:
 
@@ -307,7 +307,7 @@ Diagnosis-related variables showed moderate collinearity (r ≈ 0.84), handled e
 
 ---
 
-# 📈 Key Business Insights
+## 📈 Key Business Insights
 
 1. Diagnosis history is the strongest predictor of both condition and treatment.
 2. Organizational support perception influences outcomes but does not dominate.
@@ -317,7 +317,7 @@ Diagnosis-related variables showed moderate collinearity (r ≈ 0.84), handled e
 
 ---
 
-# 🏅 Hackathon Outcome Alignment
+## 🏅 Hackathon Outcome Alignment
 
 This solution delivers:
 
@@ -331,7 +331,7 @@ This solution delivers:
 
 ---
 
-# 🛠 Technical Stack
+## 🛠 Technical Stack
 
 * Python
 * Pandas
@@ -344,7 +344,7 @@ This solution delivers:
 
 ---
 
-# 🎯 Final Reflection
+## 🎯 Final Reflection
 
 This project demonstrates:
 
@@ -358,7 +358,7 @@ It bridges technical rigor with organizational impact.
 
 ---
 
-# 🚀 How to Run
+## 🚀 How to Run
 
 ### Central execution script
 
@@ -397,7 +397,7 @@ python src/submission_excel.py
 ```
 ---
 
-# 📂 Outputs
+## 📂 Outputs
 
 Generated artifacts:
 
