@@ -1,0 +1,16 @@
+Clustering Metrics
+
+K=2 | Silhouette=0.2762 | Inertia=10579.43
+K=3 | Silhouette=0.2904 | Inertia=9402.73
+K=4 | Silhouette=0.2514 | Inertia=8501.32
+K=5 | Silhouette=0.2072 | Inertia=7911.60
+K=6 | Silhouette=0.2058 | Inertia=7423.17
+K=7 | Silhouette=0.2091 | Inertia=6883.14
+K=8 | Silhouette=0.2232 | Inertia=6398.25
+
+Best K based on silhouette: 3
+
+Model Comparison
+KMeans Silhouette: 0.2904
+Agglomerative Silhouette: 0.2836
+Selected Model: KMeans

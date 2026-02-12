@@ -1,0 +1,23 @@
+Top 10 Correlations - Current Mental Health Condition
+Have you had a mental health disorder in the past?                                                                              0.755839
+Have you been diagnosed with a mental health condition by a medical professional?                                               0.737407
+diagnosis_reported_flag                                                                                                         0.733710
+Do you believe your productivity is ever affected by a mental health issue?                                                     0.546234
+Do you have a family history of mental illness?                                                                                 0.445723
+Do you know the options for mental health care available under your employer-provided coverage?                                 0.268147
+Did you feel that your previous employers took mental health as seriously as physical health?                                   0.263033
+If you have a mental health issue, do you feel that it interferes with your work when NOT being treated effectively?            0.250750
+If you have revealed a mental health issue to a client or business contact, do you believe this has impacted you negatively?    0.180599
+How willing would you be to share with friends and family that you have a mental illness?                                       0.053363
+
+Top 10 Correlations - Seeking Treatment
+Have you had a mental health disorder in the past?                                                                      0.753934
+Have you been diagnosed with a mental health condition by a medical professional?                                       0.727509
+diagnosis_reported_flag                                                                                                 0.724492
+Do you believe your productivity is ever affected by a mental health issue?                                             0.407405
+Do you have a family history of mental illness?                                                                         0.400231
+If you have a mental health issue, do you feel that it interferes with your work when NOT being treated effectively?    0.280201
+Do you know the options for mental health care available under your employer-provided coverage?                         0.244774
+Did you feel that your previous employers took mental health as seriously as physical health?                           0.199394
+If a mental health issue prompted you to request a medical leave from work, asking for that leave would be:             0.174365
+How willing would you be to share with friends and family that you have a mental illness?                               0.143261
