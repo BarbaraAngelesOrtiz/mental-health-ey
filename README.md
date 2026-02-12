@@ -136,9 +136,13 @@ mental-health-ey/
 ## 🧹 1️. Data Preparation & Quality Assurance
 
 ✔ Cleaned and normalized categorical responses
+
 ✔ Handled missing values (“N/A”, “I don’t know”, “Prefer not to say”)
+
 ✔ Encoded binary, ordinal, and Likert scales
+
 ✔ Implemented schema-based transformations
+
 ✔ Generated raw and cleaned value audit reports
 
 Output:
@@ -257,8 +261,6 @@ Top 3 defining variables per cluster were identified and exported as required by
 
 Two required targets:
 
----
-
 ### 🎯 Model 1
 
 Target:
@@ -322,11 +324,17 @@ Diagnosis-related variables showed moderate collinearity (r ≈ 0.84), handled e
 This solution delivers:
 
 ✔ An explainable ML model
+
 ✔ A ranked list of key workplace factors
+
 ✔ Clearly identified employee risk profiles
+
 ✔ Correlation pairs for each engineered index
+
 ✔ Cluster-defining features
+
 ✔ Concrete organizational recommendations
+
 ✔ Reproducible code pipeline
 
 ---
@@ -366,31 +374,31 @@ It bridges technical rigor with organizational impact.
 python notebooks/main.ipynb
 ```
 
-### 1️. Cleaning
+#### 1️. Cleaning
 
 ```bash
 python src/cleaning.py
 ```
 
-### 2️. Feature Engineering
+#### 2️. Feature Engineering
 
 ```bash
 python src/features.py
 ```
 
-### 3️. Clustering
+#### 3️. Clustering
 
 ```bash
 python src/clustering.py
 ```
 
-### 4️. Modeling
+#### 4️. Modeling
 
 ```bash
 python src/modeling_condition.py
 python src/modeling_treatment.py
 ```
-### 5 Clustering
+#### 5 Clustering
 
 ```bash
 python src/submission_excel.py
@@ -429,14 +437,17 @@ pip install pandas matplotlib seaborn numpy plotly math matplotlib requests
 
 ## 📂 Project Access
 
-- [ Notebook ](.notebooks/main.ipynb)
-- [ Cleaning ](.src/cleaning.py)
-- [ Analyze ](.src/analyze_values.py)
-- [ Features ](.src/features.py)
-- [ Clustering](.src/clustering.py)
-- [ Condition Model ](.src/modeling_condition.py)
-- [ Treatment Model ](.src/modeling_treatment.py)
-- [ Submission Excel](.src/submission_excel.py)
+## 📂 Project Access
+
+- [Notebook](notebooks/main.ipynb)
+- [Cleaning](src/cleaning.py)
+- [Analyze](src/analyze_values.py)
+- [Features](src/features.py)
+- [Clustering](src/clustering.py)
+- [Condition Model](src/model_condition.py)
+- [Treatment Model](src/model_treatment.py)
+- [Submission Excel](src/submission_excel.py)
+
 
 ---
 
@@ -448,10 +459,10 @@ pip install pandas matplotlib seaborn numpy plotly math matplotlib requests
 
 [LinkedIn](https://www.linkedin.com/in/barbaraangelesortiz/) | [GitHub](https://github.com/BarbaraAngelesOrtiz)
 
-![Status](https://img.shields.io/badge/Status-Completed-success) 📅 February 2026
+![Status](https://img.shields.io/badge/Status-Completed-success) 
 ![Reproducible](https://img.shields.io/badge/Reproducible-Yes-brightgreen)
 
-![EY Data Challenge](https://img.shields.io/badge/EY-Data%20Challenge-yellow)
+![EY Data Challenge](https://img.shields.io/badge/EY-Data%20Challenge-yellow) 📅 February 2026
 
 ![ML Project](https://img.shields.io/badge/Machine%20Learning-Project-purple)
 ![Feature Engineering](https://img.shields.io/badge/Feature%20Engineering-Advanced-blueviolet)
@@ -465,7 +476,6 @@ pip install pandas matplotlib seaborn numpy plotly math matplotlib requests
 
 ![Matplotlib](https://img.shields.io/badge/matplotlib-3.8.0-blue)
 ![Seaborn](https://img.shields.io/badge/seaborn-0.13.0-blue)
-
 ![Jupyter](https://img.shields.io/badge/jupyter-notebook-orange)
 
 ![KMeans](https://img.shields.io/badge/Clustering-KMeans-green)
