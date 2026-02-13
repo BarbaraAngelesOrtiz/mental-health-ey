@@ -448,10 +448,11 @@ It bridges technical rigor with organizational impact.
 python notebooks/main.ipynb
 ```
 
-#### 1️. Cleaning
+#### 1️. Cleaning and analyze
 
 ```bash
 python src/cleaning.py
+python src/analyze_values.py
 ```
 
 #### 2️. Feature Engineering
@@ -460,19 +461,18 @@ python src/cleaning.py
 python src/features.py
 ```
 
-#### 3️. Clustering
-
-```bash
-python src/clustering.py
-```
-
-#### 4️. Modeling
+#### 3. Modeling
 
 ```bash
 python src/modeling_condition.py
 python src/modeling_treatment.py
 ```
-#### 5 Clustering
+#### 4. Clustering
+
+```bash
+python src/clustering.py
+```
+#### 5. Submission of excel
 
 ```bash
 python src/submission_excel.py
@@ -488,6 +488,7 @@ Generated artifacts:
 * Cluster metrics
 * Model prediction files with probabilities
 * Serialized thresholds and models
+* Final excel document 
 
 ---
 
