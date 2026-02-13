@@ -65,7 +65,8 @@ The solution follows a structured and auditable pipeline:
 5. Correlation ranking
 6. Clustering (3 profiles)
 7. Supervised modeling (2 targets)
-8. Interpretation & Business insights
+8. Model Serialization
+9. Interpretation & Business insights
 ```
 
 Each stage was validated before moving forward to prevent leakage and ensure reproducibility.
@@ -339,7 +340,7 @@ Rather than applying uniform policies, organizations can tailor interventions ba
 
 ---
 
-## 🤖 Supervised Modeling & Model Serialization
+## 🤖 Model Serialization
 
 Two predictive targets were modeled using Logistic Regression and Random Forest:
 
