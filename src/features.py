@@ -20,6 +20,7 @@ INPUT_PATH = os.path.join(BASE_DIR, "data", "processed", "mental_health_cleaned.
 OUTPUT_PATH = os.path.join(BASE_DIR, "data", "processed", "mental_health_features.csv")
 CORR_OUTPUT = os.path.join(BASE_DIR, "data", "analysis", "feature_correlations.txt")
 IMG_OUTPUT = os.path.join(BASE_DIR, "images", "Correlation_top_features_vs_target.png")
+PREVALENCE_IMG = os.path.join(BASE_DIR, "images", "Target_prevalence.png")
 
 # LOAD DATA
 
@@ -105,6 +106,54 @@ with open(CORR_OUTPUT, "w", encoding="utf-8") as f:
     f.write("\n\nTop 10 Correlations - Seeking Treatment\n")
     f.write(corr_seek.to_string())
 
+# COLLINEARITY CHECK
+
+diagnosis_vars = [
+    "Have you been diagnosed with a mental health condition by a medical professional?",
+    "diagnosis_reported_flag",
+    "Have you had a mental health disorder in the past?"
+]
+
+diagnosis_vars = [c for c in diagnosis_vars if c in df.columns]
+
+collinearity_matrix = df[diagnosis_vars].corr()
+
+short_names = {
+    "Have you been diagnosed with a mental health condition by a medical professional?": "Diagnosed_now",
+    "diagnosis_reported_flag": "Report_flag",
+    "Have you had a mental health disorder in the past?": "Past_disorder"
+}
+
+collinearity_matrix_print = collinearity_matrix.rename(index=short_names, columns=short_names)
+
+with open(CORR_OUTPUT, "a", encoding="utf-8") as f:
+    f.write("\n\nCollinearity Check - Diagnosis Variables\n")
+    f.write(collinearity_matrix_print.to_string(float_format="{:.3f}".format))
+    f.write("\n")
+
+print("\nCollinearity matrix:")
+print(collinearity_matrix_print.to_string(float_format="{:.3f}".format))
+
+threshold = 0.80
+high_corr_pairs = []
+
+for i in range(len(collinearity_matrix.columns)):
+    for j in range(i):
+        corr_value = collinearity_matrix.iloc[i, j]
+        if abs(corr_value) >= threshold:
+            high_corr_pairs.append(
+                (collinearity_matrix.columns[i],
+                 collinearity_matrix.columns[j],
+                 corr_value)
+            )
+
+if high_corr_pairs:
+    print("\n⚠ High collinearity detected:")
+    for var1, var2, corr_value in high_corr_pairs:
+        print(f"{short_names.get(var1, var1)} ↔ {short_names.get(var2, var2)} = {corr_value:.3f}")
+else:
+    print("\nNo high collinearity detected above threshold.")
+
 # SAVE FINAL DATASET
 
 # ORGANIZATIONAL COMPOSITE INDEXES
@@ -183,5 +232,42 @@ plt.xlabel("Absolute Correlation")
 plt.tight_layout()
 plt.savefig(IMG_OUTPUT, bbox_inches="tight")
 plt.show()
+
+# PREVALENCE CHART
+
+# Calculate prevalence
+current_prev = df["target_current_condition"].mean() * 100
+seek_prev = df["target_seek_treatment"].mean() * 100
+
+labels = [
+    "Current Mental\nHealth Condition",
+    "Sought Professional\nTreatment"
+]
+
+values = [current_prev, seek_prev]
+
+plt.figure(figsize=(6, 5))
+bars = plt.bar(labels, values)
+
+plt.ylabel("Percentage (%)")
+plt.title("Prevalence of Mental Health Outcomes")
+plt.ylim(0, 100)
+
+for bar in bars:
+    height = bar.get_height()
+    plt.text(
+        bar.get_x() + bar.get_width() / 2,
+        height + 2,
+        f"{height:.1f}%",
+        ha="center",
+        va="bottom"
+    )
+
+plt.tight_layout()
+plt.savefig(PREVALENCE_IMG, bbox_inches="tight")
+plt.show()
+
+print("Prevalence chart saved to:", PREVALENCE_IMG)
+
 
 

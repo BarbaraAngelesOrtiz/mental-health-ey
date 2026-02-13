@@ -9,6 +9,8 @@ import pandas as pd
 import numpy as np
 import os
 import matplotlib.pyplot as plt
+import shap
+
 from sklearn.model_selection import train_test_split, StratifiedKFold, cross_val_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
@@ -318,6 +320,39 @@ print("Best threshold:", round(best_threshold_rf, 3))
 print("CV ROC-AUC:", round(cv_scores_rf.mean(), 3))
 print(classification_report(y_test, y_pred_rf))
 print("ROC AUC:", round(roc_auc_score(y_test, y_proba_rf), 3))
+
+# SHAP
+
+print("\nRunning SHAP analysis - TREATMENT...")
+
+rf_model_treat = rf_pipeline.named_steps["model"]
+
+X_train_imputed_treat = rf_pipeline.named_steps["imputer"].transform(X_train)
+
+explainer_treat = shap.TreeExplainer(rf_model_treat)
+
+shap_values_treat = explainer_treat(X_train_imputed_treat)
+
+shap_values_class1_treat = shap_values_treat.values[:, :, 1]
+
+shap.summary_plot(
+    shap_values_class1_treat,
+    X_train_imputed_treat,
+    feature_names=X_train.columns,
+    show=False
+)
+
+plt.gcf().set_size_inches(10, 6)
+plt.tight_layout()
+plt.savefig(
+    os.path.join(BASE_DIR, "images", "treatment", "SHAP_summary_treatment.png"),
+    dpi=300,
+    bbox_inches="tight"
+)
+plt.show()
+plt.close()
+
+print("SHAP plots saved.")
 
 # SAVE PROBABILITIES
 

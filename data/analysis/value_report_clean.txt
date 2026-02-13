@@ -14,13 +14,13 @@ COLUMN: How many employees does your company or organization have?
 Total rows: 1433
 Missing: 287 (20.03%)
 
-  292 | 26-100
+  292 | 3.0
   287 | nan
-  256 | More than 1000
-  248 | 100-500
-  210 | 6-25
-   80 | 500-1000
-   60 | 1-5
+  256 | 6.0
+  248 | 4.0
+  210 | 2.0
+   80 | 5.0
+   60 | 1.0
 
 ================================================================================
 COLUMN: Is your employer primarily a tech company/organization?
@@ -138,10 +138,10 @@ COLUMN: Would you feel comfortable discussing a mental health disorder with your
 Total rows: 1433
 Missing: 287 (20.03%)
 
-  479 | Maybe
-  392 | No
+  479 | 0.5
+  392 | 0.0
   287 | nan
-  275 | Yes
+  275 | 1.0
 
 ================================================================================
 COLUMN: Would you feel comfortable discussing a mental health disorder with your direct supervisor(s)?
@@ -189,25 +189,21 @@ Missing: 1146 (79.97%)
 COLUMN: Do you know local or online resources to seek help for a mental health disorder?
 ================================================================================
 Total rows: 1433
-Missing: 1146 (79.97%)
+Missing: 1287 (89.81%)
 
- 1146 | nan
-  141 | I know some
-   83 | Yes, I know several
-   63 | No, I don't know any
+ 1287 | nan
+   83 | 1.0
+   63 | 0.5
 
 ================================================================================
 COLUMN: If you have been diagnosed or treated for a mental health disorder, do you ever reveal this to clients or business contacts?
 ================================================================================
 Total rows: 1433
-Missing: 1146 (79.97%)
+Missing: 1203 (83.95%)
 
- 1146 | nan
-  101 | Not applicable to me
-   83 | No, because it would impact me negatively
-   57 | Sometimes, if it comes up
-   44 | No, because it doesn't matter
-    2 | Yes, always
+ 1203 | nan
+  228 | 0.0
+    2 | 1.0
 
 ================================================================================
 COLUMN: If you have revealed a mental health issue to a client or business contact, do you believe this has impacted you negatively?
@@ -224,14 +220,11 @@ Missing: 1289 (89.95%)
 COLUMN: If you have been diagnosed or treated for a mental health disorder, do you ever reveal this to coworkers or employees?
 ================================================================================
 Total rows: 1433
-Missing: 1146 (79.97%)
+Missing: 1245 (86.88%)
 
- 1146 | nan
-  111 | Not applicable to me
-   99 | Sometimes, if it comes up
-   51 | No, because it would impact me negatively
-   15 | No, because it doesn't matter
-   11 | Yes, always
+ 1245 | nan
+  177 | 0.0
+   11 | 1.0
 
 ================================================================================
 COLUMN: If you have revealed a mental health issue to a coworker or employee, do you believe this has impacted you negatively?
@@ -240,10 +233,9 @@ Total rows: 1433
 Missing: 1146 (79.97%)
 
  1146 | nan
-  133 | Not applicable to me
-   62 | I'm not sure
-   57 | No
-   35 | Yes
+  190 | 0.0
+   62 | 0.5
+   35 | 1.0
 
 ================================================================================
 COLUMN: Do you believe your productivity is ever affected by a mental health issue?
@@ -263,10 +255,9 @@ Total rows: 1433
 Missing: 1229 (85.76%)
 
  1229 | nan
-   92 | 1-25%
-   72 | 26-50%
-   26 | 51-75%
-   14 | 76-100%
+   92 | 1.0
+   86 | 0.0
+   26 | 3.0
 
 ================================================================================
 COLUMN: Do you have previous employers?
@@ -281,106 +272,96 @@ Missing: 0 (0.00%)
 COLUMN: Have your previous employers provided mental health benefits?
 ================================================================================
 Total rows: 1433
-Missing: 169 (11.79%)
+Missing: 560 (39.08%)
 
-  391 | Some did
-  372 | No, none did
-  313 | I don't know
-  188 | Yes, they all did
-  169 | nan
+  560 | nan
+  372 | 0.0
+  313 | 0.5
+  188 | 1.0
 
 ================================================================================
 COLUMN: Were you aware of the options for mental health care provided by your previous employers?
 ================================================================================
 Total rows: 1433
-Missing: 169 (11.79%)
+Missing: 1135 (79.20%)
 
-  582 | N/A (not currently aware)
-  384 | I was aware of some
-  181 | Yes, I was aware of all of them
-  169 | nan
-  117 | No, I only became aware later
+ 1135 | nan
+  181 | 1.0
+  117 | 0.0
 
 ================================================================================
 COLUMN: Did your previous employers ever formally discuss mental health (as part of a wellness campaign or other official communication)?
 ================================================================================
 Total rows: 1433
-Missing: 169 (11.79%)
+Missing: 424 (29.59%)
 
-  890 | None did
-  255 | Some did
-  169 | nan
-   86 | I don't know
-   33 | Yes, they all did
+  890 | 0.0
+  424 | nan
+   86 | 0.5
+   33 | 1.0
 
 ================================================================================
 COLUMN: Did your previous employers provide resources to learn more about mental health issues and how to seek help?
 ================================================================================
 Total rows: 1433
-Missing: 169 (11.79%)
+Missing: 540 (37.68%)
 
-  842 | None did
-  371 | Some did
-  169 | nan
-   51 | Yes, they all did
+  842 | 0.0
+  540 | nan
+   51 | 1.0
 
 ================================================================================
 COLUMN: Was your anonymity protected if you chose to take advantage of mental health or substance abuse treatment resources with previous employers?
 ================================================================================
 Total rows: 1433
-Missing: 169 (11.79%)
+Missing: 288 (20.10%)
 
-  860 | I don't know
-  169 | nan
-  164 | Yes, always
-  121 | No
-  119 | Sometimes
+  860 | 0.5
+  288 | nan
+  164 | 1.0
+  121 | 0.0
 
 ================================================================================
 COLUMN: Do you think that discussing a mental health disorder with previous employers would have negative consequences?
 ================================================================================
 Total rows: 1433
-Missing: 169 (11.79%)
+Missing: 784 (54.71%)
 
-  615 | Some of them
-  310 | I don't know
-  226 | Yes, all of them
-  169 | nan
-  113 | None of them
+  784 | nan
+  310 | 0.5
+  226 | 1.0
+  113 | 0.0
 
 ================================================================================
 COLUMN: Do you think that discussing a physical health issue with previous employers would have negative consequences?
 ================================================================================
 Total rows: 1433
-Missing: 169 (11.79%)
+Missing: 800 (55.83%)
 
-  631 | Some of them
-  559 | None of them
-  169 | nan
-   74 | Yes, all of them
+  800 | nan
+  559 | 0.0
+   74 | 1.0
 
 ================================================================================
 COLUMN: Would you have been willing to discuss a mental health issue with your previous co-workers?
 ================================================================================
 Total rows: 1433
-Missing: 169 (11.79%)
+Missing: 909 (63.43%)
 
-  740 | Some of my previous employers
-  430 | No, at none of my previous employers
-  169 | nan
-   94 | Yes, at all of my previous employers
+  909 | nan
+  430 | 0.0
+   94 | 1.0
 
 ================================================================================
 COLUMN: Would you have been willing to discuss a mental health issue with your direct supervisor(s)?
 ================================================================================
 Total rows: 1433
-Missing: 169 (11.79%)
+Missing: 823 (57.43%)
 
-  654 | Some of my previous employers
-  416 | No, at none of my previous employers
-  169 | nan
-  101 | I don't know
-   93 | Yes, at all of my previous employers
+  823 | nan
+  416 | 0.0
+  101 | 0.5
+   93 | 1.0
 
 ================================================================================
 COLUMN: Did you feel that your previous employers took mental health as seriously as physical health?
@@ -397,12 +378,11 @@ Missing: 596 (41.59%)
 COLUMN: Did you hear of or observe negative consequences for co-workers with mental health issues in your previous workplaces?
 ================================================================================
 Total rows: 1433
-Missing: 169 (11.79%)
+Missing: 613 (42.78%)
 
-  758 | None of them
-  444 | Some of them
-  169 | nan
-   62 | Yes, all of them
+  758 | 0.0
+  613 | nan
+   62 | 1.0
 
 ================================================================================
 COLUMN: Would you be willing to bring up a physical health issue with a potential employer in an interview?
@@ -2645,11 +2625,9 @@ COLUMN: Do you feel that being identified as a person with a mental health issue
 Total rows: 1433
 Missing: 0 (0.00%)
 
-  588 | Maybe
-  563 | Yes, I think it would
-  147 | No, I don't think it would
-  105 | Yes, it has
-   30 | No, it has not
+  668 | 1.0
+  588 | 0.5
+  177 | 0.0
 
 ================================================================================
 COLUMN: Do you think that team members/co-workers would view you more negatively if they knew you suffered from a mental health issue?
@@ -2657,11 +2635,9 @@ COLUMN: Do you think that team members/co-workers would view you more negatively
 Total rows: 1433
 Missing: 0 (0.00%)
 
-  591 | Maybe
-  403 | Yes, I think they would
-  348 | No, I don't think they would
-   49 | No, they do not
-   42 | Yes, they do
+  591 | 0.5
+  445 | 1.0
+  397 | 0.0
 
 ================================================================================
 COLUMN: How willing would you be to share with friends and family that you have a mental illness?
@@ -2682,10 +2658,9 @@ COLUMN: Have you observed or experienced an unsupportive or badly handled respon
 Total rows: 1433
 Missing: 89 (6.21%)
 
-  567 | No
-  346 | Maybe/Not sure
-  264 | Yes, I observed
-  167 | Yes, I experienced
+  567 | 0.0
+  431 | 1.0
+  346 | 0.5
    89 | nan
 
 ================================================================================
@@ -2695,9 +2670,9 @@ Total rows: 1433
 Missing: 776 (54.15%)
 
   776 | nan
-  246 | Yes
-  234 | No
-  177 | Maybe
+  246 | 1.0
+  234 | 0.0
+  177 | 0.5
 
 ================================================================================
 COLUMN: Do you have a family history of mental illness?

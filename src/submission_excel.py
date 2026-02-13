@@ -112,6 +112,7 @@ clusters = {
     0: ["diagnosed", "diagnosis_flag", "past_disorder"],
     1: ["productivity_affected", "prev_employer_support", "untreated_interference"],
     2: ["prev_employer_support", "untreated_interference", "knows_options"]
+    
 }
 
 for cluster_id, features in clusters.items():

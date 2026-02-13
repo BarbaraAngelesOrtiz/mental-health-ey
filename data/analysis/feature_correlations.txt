@@ -21,3 +21,9 @@ Do you know the options for mental health care available under your employer-pro
 Did you feel that your previous employers took mental health as seriously as physical health?                           0.199394
 If a mental health issue prompted you to request a medical leave from work, asking for that leave would be:             0.174365
 How willing would you be to share with friends and family that you have a mental illness?                               0.143261
+
+Collinearity Check - Diagnosis Variables
+               Diagnosed_now  Report_flag  Past_disorder
+Diagnosed_now          1.000        0.993          0.787
+Report_flag            0.993        1.000          0.783
+Past_disorder          0.787        0.783          1.000

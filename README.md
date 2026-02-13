@@ -1,15 +1,22 @@
 # 🧠 Workplace Mental Health Risk Modeling
-## EY Data Challenge – Predictive ML & Employee Profiling
+## Innovating Mental Health Risk Assessment: Predictive ML & Employee Profiling
 
 ---
 
-# 🏆 Hackathon Context
+## 🏆 Hackathon Context and Objective
 
-This project was developed as part of the **EY Data Challenge Hackathon 2026**.
+This project was developed as part of the **EY Data Challenge Hackathon 2026: Innovating Mental Health Risk Assessment**. This project developed robust machine learning models to predict:
 
-### 🎯 Use Case
+* The current presence of a mental health condition
+* The likelihood of seeking professional treatment
 
-Build an explainable Machine Learning system to predict mental health risk factors (e.g., anxiety, depression, stress) using structured survey data, and provide actionable insights for early detection and workplace intervention.
+Additionally, the analysis identified key structural risk drivers and segmented employees into actionable behavioral profiles to support targeted, data-driven organizational interventions.
+
+---
+
+## 🎯 Use Case
+
+Build an explainable Machine Learning system to predict mental health risk factors (anxiety, depression, stress) using structured survey data, and provide actionable insights for early detection and workplace intervention.
 
 Deliverables required:
 
@@ -23,7 +30,18 @@ Deliverables required:
 
 ---
 
-# 📊 Dataset
+## 📊 Dataset
+
+* 1,433 technology professionals
+* 69 engineered features
+* 26.3% structured missingness (logic-based and conservative imputation applied)
+
+Prevalence rates:
+
+* 52% reported a current mental health condition
+* 58.5% had sought professional treatment
+
+A strong correlation was observed between condition presence and treatment-seeking behavior (r = 0.64). However, treatment is not universal, suggesting structural barriers such as limited awareness of support resources and perceived stigma.
 
 Anonymous survey of technology industry professionals, including:
 
@@ -35,7 +53,7 @@ Anonymous survey of technology industry professionals, including:
 
 ---
 
-# 🔄 Analytical Workflow
+## 🔄 Analytical Workflow
 
 The solution follows a structured and auditable pipeline:
 
@@ -53,7 +71,7 @@ The solution follows a structured and auditable pipeline:
 Each stage was validated before moving forward to prevent leakage and ensure reproducibility.
 
 ---
-# 🗂 Repository Structure
+## 🗂 Repository Structure
 
 ````
 mental-health-ey/
@@ -100,6 +118,7 @@ mental-health-ey/
 │   │   ├── PR_logistic.png
 │   │   ├── Radar_logistic.png
 │   │   ├── RF_feature_importance.png
+│   │   ├── SHAP_summary_condition.png
 │   │   └── ROC_logistic.png
 │   │
 │   └── treatment/
@@ -108,6 +127,7 @@ mental-health-ey/
 │       ├── PR_logistic.png
 │       ├── Radar_logistic.png
 │       ├── RF_feature_importance.png
+│       ├── SHAP_summary_treatment.png
 │       └── ROC_logistic.png
 │
 ├── models/
@@ -120,7 +140,7 @@ mental-health-ey/
 │   ├── rf_threshold_condition.pkl
 │   └── rf_threshold_treatment.pkl
 │
-├──  src/
+├── src/
 │    ├── analyze_values.py
 │    ├── cleaning.py
 │    ├── clustering.py
@@ -128,6 +148,10 @@ mental-health-ey/
 │    ├── model_condition.py
 │    ├── model_treatment.py
 │    └── submission_excel.py 
+│ 
+├── docs/
+│    ├── Executive_summary.pdf
+│    └── Report.pdf
 │
 └── requirements. txt 
 ````
@@ -157,8 +181,6 @@ data/processed/mental_health_cleaned.csv
 
 Three composite indices were engineered as required:
 
----
-
 ### 🟢 Mental Health Support Index
 
 Captures institutional support:
@@ -169,8 +191,6 @@ Captures institutional support:
 * Formal communication
 
 Top correlated field pairs were identified as required by the submission template.
-
----
 
 ### 🟠 Workplace Stigma Index
 
@@ -183,8 +203,6 @@ Captures perceived negative consequences:
 
 Top 5 correlation pairs provided.
 
----
-
 ### 🔵 Organizational Openness Score
 
 Captures comfort discussing mental health:
@@ -193,73 +211,13 @@ Captures comfort discussing mental health:
 * With supervisors
 * With family/friends
 
-Top 5 correlation pairs provided.
-
-All engineered features were saved into a modeling-ready dataset before clustering and supervised learning.
+Top 5 correlation pairs provided. All engineered features were saved into a modeling-ready dataset before clustering and supervised learning.
 
 ---
 
-## 👥 3️. Clustering — Worker Profiling
+## 🤖 3. Supervised Modeling
 
-Objective: Identify three distinct employee profiles.
-
-KMeans was selected because:
-
-* Higher silhouette score than Agglomerative
-* Stability on standardized numeric features
-* Clear interpretability
-* Suitable for fixed k=3 requirement
-
----
-
-### 🟠 Cluster 0 - Low Support / Low Openness
-
-~63% of sample
-
-* Many small companies
-* Almost no mental health benefits
-* Extremely low support index (~0.05)
-* Stigma present
-
-**Interpretation:**
-Structurally under-supported environments.
-Systemically vulnerable population.
-
----
-
-### 🔵 Cluster 1 — Large Companies / Moderate Support
-
-~16% of sample
-
-* Formal policies exist
-* Moderate support
-* Lower stigma
-* Openness similar to other clusters
-
-**Key Insight:**
-Having policies ≠ feeling psychologically safe.
-
----
-
-### 🟢 Cluster 2 — High Benefits / Strong Support
-
-~20% of sample
-
-* Many small companies
-* Benefits nearly universal
-* Highest support index
-* Slightly higher stigma than cluster 1
-
-**Insight:**
-Small organizations can outperform large enterprises in mental health culture.
-
-Top 3 defining variables per cluster were identified and exported as required by submission format.
-
----
-
-## 🤖 4️. Supervised Modeling
-
-Two required targets:
+Two required targets. Random Forest was evaluated but Logistic Regression performed better and provided clearer interpretability.
 
 ### 🎯 Model 1
 
@@ -269,7 +227,14 @@ Target:
 * Logistic Regression ROC-AUC: **0.923**
 * F1 Score ≈ 0.90
 * Top 10 correlated features identified and ranked
-* Model trained only on selected top features (as required)
+* Model trained only on selected top features 
+
+Key predictors:
+
+* Past disorder history
+* Clinical diagnosis
+* Family history
+* Reported productivity interference
 
 ---
 
@@ -283,7 +248,12 @@ Target:
 * Top 10 correlated features identified
 * Model trained using only those selected predictors
 
-Random Forest was evaluated but Logistic Regression performed better and provided clearer interpretability.
+Key drivers:
+
+* Clinical diagnosis
+* Awareness of available support resources
+* Organizational openness
+* Perceived stigma
 
 ---
 
@@ -305,17 +275,86 @@ Strongest drivers:
 * Productivity impact
 * Untreated interference
 
-Diagnosis-related variables showed moderate collinearity (r ≈ 0.84), handled explicitly during evaluation.
+Diagnosis-related variables showed near-perfect collinearity (r = 0.993 between diagnosis indicators).
 
 ---
 
-## 📈 Key Business Insights
+## 🔍 Model Explainability (SHAP)
 
-1. Diagnosis history is the strongest predictor of both condition and treatment.
-2. Organizational support perception influences outcomes but does not dominate.
-3. A large segment reports productivity impact without formal diagnosis.
-4. Policy presence does not automatically create psychological safety.
-5. Company size alone does not determine mental health support quality.
+To ensure interpretability and strategic insight, SHAP (SHapley Additive exPlanations) was used to analyze feature contributions in both classification models.
+
+### 💬 Treatment Model – Key Drivers
+
+Treatment-seeking behavior is primarily influenced by:
+
+* Employer mental health support
+* Knowledge of available care options
+* Perceived stigma and workplace interference
+
+This provides actionable insights for organizational intervention strategies.
+
+---
+
+## 👥 4. Clustering 
+
+Objective: Identify three distinct employee profiles. This employee segmentation used KMeans, k=3
+
+1. **Clinically Diagnosed**
+   High formal diagnosis rates and ongoing work interference.
+
+2. **Undiagnosed but Impacted**
+   Significant productivity loss without formal diagnosis, a hidden operational risk group.
+
+3. **Lower Disclosure**
+   Low reported openness and potential underreporting risk.
+
+
+KMeans was selected because:
+
+* Higher silhouette score than Agglomerative
+* Stability on standardized numeric features
+* Clear interpretability
+* Suitable for fixed k=3 requirement
+
+---
+
+### Employee Segmentation – Behavioral Profiles
+
+Using KMeans clustering (k=3), the workforce was segmented into three meaningful mental health profiles:
+
+🔹 **Clinically Diagnosed & High Impact**
+Employees with established diagnoses and significant workplace interference.
+
+🔹 **Undiagnosed but Impacted**
+Employees reporting productivity disruption without formal diagnosis, representing a hidden operational risk.
+
+🔹 **Lower Risk / Moderate Support**
+Employees with lower reported clinical burden and comparatively stronger perceived support.
+
+This segmentation demonstrates that workplace mental health risk is not binary but distributed across distinct structural patterns. 
+
+The identification of an undiagnosed yet operationally affected group underscores the importance of proactive screening and improved visibility of mental health resources.
+
+Rather than applying uniform policies, organizations can tailor interventions based on employee risk profiles.
+
+---
+
+## 📈 Key Business Insights & Strategic Implications
+
+The analysis reveals that mental health outcomes in technology workplaces are structurally driven rather than random.
+
+Diagnosis history emerges as the strongest predictor of both current condition and treatment-seeking behavior, indicating continuity in mental health patterns. While perceived organizational support and openness culture influence outcomes, formal policy presence alone does not guarantee psychological safety. Similarly, company size does not inherently determine the quality of mental health support structures.
+
+A particularly critical finding is the existence of a large segment of employees reporting measurable productivity impact without formal diagnosis. This group represents a hidden operational risk and a missed opportunity for early intervention.
+
+These results suggest that organizations must move beyond reactive models of support and adopt proactive, data-driven strategies. Effective actions include:
+
+* Implementing confidential early-risk screening mechanisms
+* Increasing visibility and structured communication of available mental health resources
+* Training managers to foster psychological safety and open dialogue
+* Deploying targeted interventions tailored to distinct employee segments
+
+By addressing both structural risk drivers and cultural dynamics, companies can reduce untreated cases, mitigate productivity loss, and strengthen long-term workforce sustainability.
 
 ---
 
@@ -353,6 +392,10 @@ This solution delivers:
 ---
 
 ## 🎯 Final Reflection
+
+Workplace mental health is predictable, measurable, and influenceable. The strong predictive signal (ROC-AUC > 0.92) combined with actionable segmentation demonstrates that data-driven strategies can meaningfully reduce untreated cases and productivity loss.
+
+Mental health strategy is not only an ethical responsibility, it is a structural and economic lever for sustainable organizational performance.
 
 This project demonstrates:
 
@@ -480,4 +523,11 @@ pip install pandas matplotlib seaborn numpy plotly math matplotlib requests
 ![Logistic Regression](https://img.shields.io/badge/Model-Logistic%20Regression-success)
 ![Random Forest](https://img.shields.io/badge/Model-Random%20Forest-success)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3.0-orange)
+
+
+
+
+
+
+
 

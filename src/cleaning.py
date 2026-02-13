@@ -9,6 +9,7 @@
 import pandas as pd
 import numpy as np
 import os
+import matplotlib.pyplot as plt
 
 # CONFIG
 
@@ -20,6 +21,76 @@ OUTPUT_PATH = os.path.join(BASE_DIR, "data", "processed", "mental_health_cleaned
 
 RAW_VALUE_REPORT = os.path.join(BASE_DIR, "data", "analysis", "value_report_raw.txt")
 CLEAN_VALUE_REPORT = os.path.join(BASE_DIR, "data", "analysis", "value_report_clean.txt")
+
+UNIQUE_COMPARISON_PATH = os.path.join(BASE_DIR, "data", "analysis", "unique_value_comparison.csv")
+UNIQUE_PLOT_PATH = os.path.join(BASE_DIR, "images", "Unique_value_reduction.png")
+
+def detect_unmapped_columns(df_clean):
+    print("\n🔎 Checking for columns not governed by SCHEMA...\n")
+
+    # Columnas que siguen siendo object
+    object_cols = df_clean.select_dtypes(include=["object"]).columns.tolist()
+
+    # Columnas definidas en el schema
+    schema_cols = [c.strip() for c in SCHEMA.keys()]
+
+    unmapped = []
+
+    for col in object_cols:
+        if col.strip() not in schema_cols:
+            unmapped.append(col)
+
+    if unmapped:
+        print("⚠️ Columns not governed by SCHEMA:")
+        for col in unmapped:
+            print(f" - {col}")
+    else:
+        print("✅ All object columns are governed by SCHEMA")
+
+    return unmapped
+
+def generate_unique_comparison(df_raw, df_clean):
+
+    comparison = []
+
+    for col in df_clean.columns:
+        if col in df_raw.columns:
+
+            raw_unique = df_raw[col].nunique(dropna=True)
+            clean_unique = df_clean[col].nunique(dropna=True)
+
+            comparison.append({
+                "column": col,
+                "unique_raw": raw_unique,
+                "unique_clean": clean_unique,
+                "reduction": raw_unique - clean_unique
+            })
+
+    comp_df = pd.DataFrame(comparison)
+    comp_df = comp_df.sort_values("reduction", ascending=False)
+
+    comp_df.to_csv(UNIQUE_COMPARISON_PATH, index=False)
+
+    # Plot Top 10 reductions
+    top10 = comp_df.head(10)
+
+    plt.figure(figsize=(10,6))
+
+    x = np.arange(len(top10))
+
+    plt.bar(x - 0.2, top10["unique_raw"], width=0.4, label="Raw")
+    plt.bar(x + 0.2, top10["unique_clean"], width=0.4, label="Clean")
+
+    plt.xticks(x, top10["column"], rotation=75, ha="right")
+    plt.ylabel("Number of Unique Values")
+    plt.title("Semantic Noise Reduction - Top 10 reductions(Raw vs Clean)")
+    plt.legend()
+    plt.tight_layout()
+
+    plt.savefig(UNIQUE_PLOT_PATH, bbox_inches="tight")
+    plt.close()
+
+    print("Unique value comparison generated.")
 
 # GENERIC TEXT NORMALIZATION
 
@@ -240,6 +311,8 @@ SCHEMA = {
     "Have you had a mental health disorder in the past?": map_binary,
     "Have you been diagnosed with a mental health condition by a medical professional?": map_binary,
     "Have you ever sought treatment for a mental health issue from a mental health professional?": map_binary,
+    "If you have been diagnosed or treated for a mental health disorder, do you ever reveal this to clients or business contacts?": map_binary,
+    "If you have been diagnosed or treated for a mental health disorder, do you ever reveal this to coworkers or employees?": map_binary,
 
     # Frequency scale
     
@@ -256,7 +329,7 @@ SCHEMA = {
     "Do you believe your productivity is ever affected by a mental health issue?": map_yn_unsure,
     "Do you feel that your employer takes mental health as seriously as physical health?": map_yn_unsure,
     "Did you feel that your previous employers took mental health as seriously as physical health?": map_yn_unsure,
-    "Would you feel comfortable discussing a mental health disorder with your co-workers?": map_yn_unsure,
+    "Would you feel comfortable discussing a mental health disorder with your coworkers?": map_yn_unsure,
     "Would you feel comfortable discussing a mental health disorder with your direct supervisor(s)?": map_yn_unsure,
     "Would you bring up a mental health issue with a potential employer in an interview?": map_yn_unsure,
     "Would you be willing to bring up a physical health issue with a potential employer in an interview?": map_yn_unsure,
@@ -270,6 +343,22 @@ SCHEMA = {
     "Do you have a family history of mental illness?": map_yn_unsure,
     "Is your anonymity protected if you choose to take advantage of mental health or substance abuse treatment resources provided by your employer?": map_yn_unsure,
 
+    "Do you know local or online resources to seek help for a mental health disorder?": map_yn_unsure,
+    "Have your previous employers provided mental health benefits?": map_yn_unsure,
+    "Were you aware of the options for mental health care provided by your previous employers?": map_yn_unsure,
+    "Did your previous employers ever formally discuss mental health (as part of a wellness campaign or other official communication)?": map_yn_unsure,
+    "Did your previous employers provide resources to learn more about mental health issues and how to seek help?": map_yn_unsure,
+    "Was your anonymity protected if you chose to take advantage of mental health or substance abuse treatment resources with previous employers?": map_yn_unsure,
+    "Do you think that discussing a mental health disorder with previous employers would have negative consequences?": map_yn_unsure,
+    "Do you think that discussing a physical health issue with previous employers would have negative consequences?": map_yn_unsure,
+    "Would you have been willing to discuss a mental health issue with your previous co-workers?": map_yn_unsure,
+    "Would you have been willing to discuss a mental health issue with your direct supervisor(s)?": map_yn_unsure,
+    "Did you hear of or observe negative consequences for co-workers with mental health issues in your previous workplaces?": map_yn_unsure,
+    "Do you feel that being identified as a person with a mental health issue would hurt your career?": map_yn_unsure,
+    "Do you think that team members/co-workers would view you more negatively if they knew you suffered from a mental health issue?": map_yn_unsure,
+    "Have you observed or experienced an unsupportive or badly handled response to a mental health issue in your current or previous workplace?": map_yn_unsure,
+    "Have your observations of how another individual who discussed a mental health disorder made you less likely to reveal a mental health issue yourself in your current workplace?": map_yn_unsure,
+
     # Openness scale (0–4)
 
     "How willing would you be to share with friends and family that you have a mental illness?": map_openness,
@@ -277,6 +366,13 @@ SCHEMA = {
     # Negative impact perception
 
     "If you have revealed a mental health issue to a client or business contact, do you believe this has impacted you negatively?": map_negative_impact,
+    "If you have revealed a mental health issue to a coworker or employee, do you believe this has impacted you negatively?": map_negative_impact,
+    
+    # Clean company size
+    "How many employees does your company or organization have?": clean_company_size,
+
+    # Map percentage
+    "If yes, what percentage of your work time (time performing primary or secondary job functions) is affected by a mental health issue?": map_percentage,
 
 }
 
@@ -329,9 +425,10 @@ def main():
     df_raw = pd.read_csv(INPUT_PATH)
 
     df_raw.columns = (
-        df_raw.columns
+    df_raw.columns
         .str.strip()
         .str.replace(r"\s+", " ", regex=True)
+        .str.replace("\u2011", "-", regex=False)
     )
 
     df_raw.columns = df_raw.columns.str.replace("\u2011", "-", regex=False)
@@ -341,7 +438,7 @@ def main():
 
     for schema_col, mapper in SCHEMA.items():
         for df_col in df_clean.columns:
-            if df_col.strip() == schema_col.strip():
+            if df_col.strip().lower() == schema_col.strip().lower():
                 if mapper is not None:
                     df_clean[df_col] = df_clean[df_col].apply(mapper)
 
@@ -351,9 +448,14 @@ def main():
     print("Saving cleaned dataset")
     df_clean.to_csv(OUTPUT_PATH, index=False)
 
+    detect_unmapped_columns(df_clean)
+
     print("Generating reports")
     generate_value_report(df_raw, RAW_VALUE_REPORT)
     generate_value_report(df_clean, CLEAN_VALUE_REPORT)
+
+    print("Generating unique value comparison")
+    generate_unique_comparison(df_raw, df_clean)
 
     print("Cleaning completed successfully")
 
