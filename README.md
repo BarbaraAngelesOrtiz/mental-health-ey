@@ -489,6 +489,7 @@ Generated artifacts:
 * Model prediction files with probabilities
 * Serialized thresholds and models
 * Final excel document 
+* Executive Summary and Report 
 
 ---
 
@@ -520,6 +521,8 @@ pip install pandas matplotlib seaborn numpy plotly math matplotlib requests
 - [Condition Model](src/model_condition.py)
 - [Treatment Model](src/model_treatment.py)
 - [Submission Excel](src/submission_excel.py)
+- [Executive Summary](docs/Executive_summary.pdf)
+- [Report](docs/Report.pdf)
 
 
 ---
