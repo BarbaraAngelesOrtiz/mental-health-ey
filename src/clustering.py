@@ -24,7 +24,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(SCRIPT_DIR)
 
 FEATURE_PATH = os.path.join(BASE_DIR, "data", "processed", "mental_health_features.csv")
-CLUSTER_OUTPUT_PATH = os.path.join(BASE_DIR, "data", "analysis", "clusters.csv")
+CLUSTER_OUTPUT_PATH = os.path.join(BASE_DIR, "data", "processed", "clusters.csv")
 SUMMARY_OUTPUT_PATH = os.path.join(BASE_DIR, "data", "analysis", "cluster_summary.csv")
 METRICS_OUTPUT_PATH = os.path.join(BASE_DIR, "data", "analysis", "cluster_metrics.txt")
 

@@ -89,10 +89,10 @@ mental-health-ey/
 │   │   ├── mental_health_features.csv
 │   │   ├── model_condition_with_probs.csv
 │   │   ├── model_treatment_with_probs.csv
+│   │   ├── clusters.csv
 │   │   └── submission_filled.xlsx
 │   │
 │   └── analysis/
-│       ├── clusters.csv
 │       ├── cluster_metrics.txt
 │       ├── cluster_summary.csv
 │       ├── correlation_matrix.csv
