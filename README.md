@@ -158,7 +158,7 @@ mental-health-ey/
 ````
 ---
 
-## 🧹 1️. Data Preparation & Quality Assurance
+## 🧹 Data Preparation & Quality Assurance
 
 ✔ Cleaned and normalized categorical responses
 
@@ -178,7 +178,7 @@ data/processed/mental_health_cleaned.csv
 
 ---
 
-## 🧮 2️. Feature Engineering & Index Construction
+## 🧮 Feature Engineering & Index Construction
 
 Three composite indices were engineered as required:
 
@@ -216,7 +216,7 @@ Top 5 correlation pairs provided. All engineered features were saved into a mode
 
 ---
 
-## 🤖 3. Supervised Modeling
+## 🤖 Supervised Modeling
 
 Two required targets. Random Forest was evaluated but Logistic Regression performed better and provided clearer interpretability.
 
@@ -296,7 +296,7 @@ This provides actionable insights for organizational intervention strategies.
 
 ---
 
-## 👥 4. Clustering 
+## 👥 Clustering 
 
 Objective: Identify three distinct employee profiles. This employee segmentation used KMeans, k=3
 
