@@ -339,6 +339,36 @@ Rather than applying uniform policies, organizations can tailor interventions ba
 
 ---
 
+## 🤖 Supervised Modeling & Model Serialization
+
+Two predictive targets were modeled using Logistic Regression and Random Forest:
+
+1. **Current mental health condition**
+2. **Treatment-seeking behavior**
+
+The trained models and their classification thresholds were serialized in the `models/` folder, enabling reproducible predictions without retraining. Serialized files include:
+
+```
+logistic_model_condition.pkl       logistic_threshold_condition.pkl
+logistic_model_treatment.pkl       logistic_threshold_treatment.pkl
+rf_model_condition.pkl             rf_threshold_condition.pkl
+rf_model_treatment.pkl             rf_threshold_treatment.pkl
+```
+
+These can be loaded in Python using `joblib`:
+
+```python
+import joblib
+
+# Load a model and its threshold
+model = joblib.load('models/logistic_model_condition.pkl')
+threshold = joblib.load('models/logistic_threshold_condition.pkl')
+```
+
+This approach ensures that future steps, analyses, or deployment pipelines can leverage the trained models directly, maintaining reproducibility and efficiency.
+
+---
+
 ## 📈 Key Business Insights & Strategic Implications
 
 The analysis reveals that mental health outcomes in technology workplaces are structurally driven rather than random.
