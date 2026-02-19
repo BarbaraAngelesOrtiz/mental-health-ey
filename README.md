@@ -5,7 +5,7 @@
 
 ## 🏆 Hackathon Context and Objective
 
-This project was developed as part of the **EY Data Challenge Hackathon 2026: Innovating Mental Health Risk Assessment**. This project developed robust machine learning models to predict:
+This project was developed as part of the (**EY Data Challenge Hackathon 2026: Innovating Mental Health Risk Assessment**)[https://challenge.ey.com/challenges/innovating-mental-health-risk-assessment/overview]. This project developed robust machine learning models to predict:
 
 * The current presence of a mental health condition
 * The likelihood of seeking professional treatment
